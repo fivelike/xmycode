@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { NavController ,MenuController,ModalController} from 'ionic-angular';
 
 import { HomeDetail } from '../homedetail/homedetail';
-// import {UserCenter} from '../usercenter/usercenter';
+import { LoginPage } from '../login/login';
+import { ContactDetails } from '../contactdetails/contactdetails';
 
 @Component({
   selector: 'page-home',
@@ -18,10 +19,10 @@ export class HomePage {
     public menuCtrl: MenuController,
     public modalCtrl: ModalController) {
 
-      // if(this.storage['Logined'] != 'true'){
-      //   let userModal = this.modalCtrl.create(UserCenter);
-      //   userModal.present();
-      // }
+      if(this.storage['Logined'] != 'true'){
+        let LoginModal = this.modalCtrl.create(LoginPage);
+        LoginModal.present();
+      }
 
 
     this.menuCtrl.enable(true);
@@ -68,6 +69,11 @@ export class HomePage {
 
       infiniteScroll.complete();
     }, 2000);
+  }
+
+  openContactDetail(){
+    let detailModal = this.modalCtrl.create(ContactDetails);
+    detailModal.present();
   }
 
 }

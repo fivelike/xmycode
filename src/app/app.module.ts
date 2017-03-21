@@ -13,12 +13,14 @@ import { ContactDetails} from '../pages/contactdetails/contactdetails';
 import {MessageDetail} from '../pages/messagedetail/messagedetail';
 import { LoginPage } from '../pages/login/login';
 import { Register } from '../pages/register/register';
+import { Organizations } from '../pages/organizations/organizations';
+import { OrganizationDetail } from '../pages/organizationdetail/organizationdetail';
 
 @NgModule({
   declarations: [
     MyApp,
     UserCenter,
-
+    Organizations,
     TabsPage,
     ContactPage,
     HomePage,
@@ -27,7 +29,8 @@ import { Register } from '../pages/register/register';
     ContactDetails,
     MessageDetail,
     LoginPage,
-    Register
+    Register,
+    OrganizationDetail
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,7 +39,7 @@ import { Register } from '../pages/register/register';
   entryComponents: [
     MyApp,
     UserCenter,
-
+    Organizations,
     TabsPage,
     ContactPage,
     HomePage,
@@ -45,7 +48,8 @@ import { Register } from '../pages/register/register';
     ContactDetails,
     MessageDetail,
     LoginPage,
-    Register
+    Register,
+    OrganizationDetail
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

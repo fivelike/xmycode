@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavParams } from 'ionic-angular';
+import { NavParams ,ViewController} from 'ionic-angular';
 
 @Component({
   selector: 'page-contactdetails',
@@ -8,8 +8,11 @@ import { NavParams } from 'ionic-angular';
 })
 export class ContactDetails {
 	item : any;
-	constructor(public params: NavParams){
+	constructor(public params: NavParams,
+  public viewCtrl: ViewController){
 		this.item = this.params.get('item');
 	}
-
+  dismiss(){
+    this.viewCtrl.dismiss();
+  }
 }

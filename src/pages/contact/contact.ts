@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ToastController, ActionSheetController} from 'ionic-angular';
+import { NavController, AlertController, ToastController, ActionSheetController,ModalController} from 'ionic-angular';
 import { ContactDetails } from '../contactdetails/contactdetails';
+import { Organizations } from '../organizations/organizations';
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
@@ -14,21 +15,22 @@ export class ContactPage {
   constructor(public navCtrl: NavController,
   public alertCtrl: AlertController,
   public toastCtrl: ToastController,
-  public actionSheetCtrl: ActionSheetController) {
+  public actionSheetCtrl: ActionSheetController,
+  public modalCtrl: ModalController) {
 
   this.favorites = [];
 
   this.contacts = [{ contactid: 1, contactname: "One", contacttext: "You are my favorite person in my life." },
     { contactid: 2, contactname: "Two", contacttext: "If you get tired, learn to rest, not to quit." },
-    { contactid: 3, contactname: "Three", contacttext: "Beauty is to fight for rather than to wait for." },
-    { contactid: 4, contactname: "Four", contacttext: "Always remember the past, but never get stuck." },
-    { contactid: 5, contactname: "Five", contacttext: "In fact, each of the road leading to the sun, are full of frustrations." }];
-}
+    { contactid: 3, contactname: "Three", contacttext: "Beauty is to fight for rather than to wait for." }];
+  }
 
 
 itemClick(event, contact) {
   //点击时加载详细页面
-  this.navCtrl.push(ContactDetails, { item: contact });
+  // this.navCtrl.push(ContactDetails, { item: contact });
+  let detailModal = this.modalCtrl.create(ContactDetails);
+  detailModal.present();
 }
 
 removeContact(contact) {
@@ -133,16 +135,18 @@ hold(event, contact) {
 }
 
 doRefresh(refresher){
-  this.contacts[5]={ contactid: 1, contactname: "One", contacttext: "You are my favorite person in my life." };
-  this.contacts[6] = { contactid: 2, contactname: "Two", contacttext: "If you get tired, learn to rest, not to quit." };
-  this.contacts[7]= { contactid: 3, contactname: "Three", contacttext: "Beauty is to fight for rather than to wait for." };
-  this.contacts[8]= { contactid: 4, contactname: "Four", contacttext: "Always remember the past, but never get stuck." };
-  this.contacts[9]=  { contactid: 5, contactname: "Five", contacttext: "In fact, each of the road leading to the sun, are full of frustrations." };
+  this.contacts[3]={ contactid: 1, contactname: "One", contacttext: "You are my favorite person in my life." };
+  this.contacts[4] = { contactid: 2, contactname: "Two", contacttext: "If you get tired, learn to rest, not to quit." };
+
 
   setTimeout(() => {
     refresher.complete();
   }, 1000);
 }
 
+add(){
+  let addModal = this.modalCtrl.create(Organizations);
+  addModal.present();
+}
 
 }
